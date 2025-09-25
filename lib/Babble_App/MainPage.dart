@@ -143,8 +143,72 @@ class _MainpageState extends State<Mainpage> {
             Expanded(
               flex: 55,
               child: Container(
-                width: MediaQuery.of(context).size.width,
-                color: Colors.amber,
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Column(
+                      children: [
+                        SizedBox(
+                          width: 200,
+                          height: 240,
+                          child: Padding(
+                            padding: const EdgeInsets.all(3.0),
+                            child: Card(
+                              color: Color(0xFFFFF0F0),
+
+                              child: Text(
+                                'Bu bir kart',
+                              ), // Card'a bir içerik ekledik
+                            ),
+                          ),
+                        ),
+                        SizedBox(
+                          width: 200,
+                          height: 160,
+                          child: Padding(
+                            padding: const EdgeInsets.all(4.0),
+                            child: Card(
+                              color: Color(0xFFE6F0FF),
+                              child: Text(
+                                'Bu bir kart',
+                              ), // Card'a bir içerik ekledik
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                    Column(
+                      children: [
+                        SizedBox(
+                          width: 200,
+                          height: 200,
+                          child: Padding(
+                            padding: const EdgeInsets.all(4.0),
+                            child: Card(
+                              color: Color(0xFFFFFCE6),
+                              child: Text(
+                                'Bu bir kart',
+                              ), // Card'a bir içerik ekledik
+                            ),
+                          ),
+                        ),
+                        SizedBox(
+                          width: 200,
+                          height: 210,
+                          child: Padding(
+                            padding: const EdgeInsets.all(4.0),
+                            child: Card(
+                              color: Color(0xFFEDEBFF),
+                              child: Text(
+                                'Bu bir kart',
+                              ), // Card'a bir içerik ekledik
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
               ),
             ),
           ],
