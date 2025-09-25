@@ -14,31 +14,7 @@ class _MainpageState extends State<Mainpage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Theme.of(context).scaffoldBackgroundColor,
-      bottomNavigationBar: BottomNavigationBar(
-        type: BottomNavigationBarType.fixed,
-        fixedColor: Colors.deepPurple,
-        items: [
-          BottomNavigationBarItem(
-            icon: Icon(
-              Icons.other_houses_outlined,
-              color: Colors.blueGrey[200],
-            ),
-            label: "Home",
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.explore, color: Colors.blueGrey[200]),
-            label: "Explore",
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.menu_book_sharp, color: Colors.blueGrey[200]),
-            label: "Courses",
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.person, color: Colors.blueGrey[200]),
-            label: "Profile",
-          ),
-        ],
-      ),
+      bottomNavigationBar: bottommenu(),
       body: SafeArea(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -86,76 +62,7 @@ class _MainpageState extends State<Mainpage> {
               child: Container(
                 padding: EdgeInsets.all(5),
                 width: MediaQuery.of(context).size.width,
-                child: Card(
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadiusGeometry.circular(30),
-                  ),
-                  color: Colors.deepPurple,
-                  elevation: 0,
-                  child: Row(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.all(15.0),
-                        child: CircularPercentIndicator(
-                          radius: 70.0, // büyükluk
-                          lineWidth: 12.0, //kalınlık
-                          percent: 0.75,
-                          progressColor: Colors.white,
-                          center: Text(
-                            "%75",
-                            style: TextStyle(
-                              fontSize: 22,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.white,
-                            ),
-                          ),
-
-                          //yüzde
-                        ),
-                      ),
-                      Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-
-                        children: [
-                          Padding(
-                            padding: const EdgeInsets.only(left: 2, bottom: 10),
-                            child: Text(
-                              "Speaking",
-                              style: Theme.of(context).textTheme.bodyLarge
-                                  ?.copyWith(color: Colors.white),
-                            ),
-                          ),
-                          Text(
-                            "Awesome-we're pulling   ",
-                            style: Theme.of(context).textTheme.labelLarge
-                                ?.copyWith(color: Colors.white),
-                            softWrap: true,
-                            maxLines: null,
-                            overflow: TextOverflow.visible,
-                          ),
-                          TextButton(
-                            onPressed: () {},
-                            child: Row(
-                              children: [
-                                Text(
-                                  "Continue Lesson ",
-                                  style: Theme.of(context).textTheme.bodyMedium
-                                      ?.copyWith(color: Colors.white),
-                                ),
-                                Icon(
-                                  Icons.arrow_right_alt_sharp,
-                                  color: Colors.white,
-                                ),
-                              ],
-                            ),
-                          ),
-                        ],
-                      ),
-                    ],
-                  ),
-                ),
+                child: infocard(),
               ),
             ),
             Padding(
@@ -183,6 +90,7 @@ class _MainpageState extends State<Mainpage> {
                               backcolor: Color(0xFFFFF0F0),
                               imagepatth: 'headphone.png',
                               title: 'Listening',
+                              lessons: 10,
                             ),
                           ),
                         ),
@@ -195,6 +103,7 @@ class _MainpageState extends State<Mainpage> {
                               backcolor: Color(0xFFE6F0FF),
                               imagepatth: 'Speaker.png',
                               title: 'Speaking',
+                              lessons: 30,
                             ),
                           ),
                         ),
@@ -211,6 +120,7 @@ class _MainpageState extends State<Mainpage> {
                               backcolor: Color(0xFFFFEBEE),
                               imagepatth: 'reading.png',
                               title: 'Reading',
+                              lessons: 20,
                             ),
                           ),
                         ),
@@ -223,6 +133,7 @@ class _MainpageState extends State<Mainpage> {
                               backcolor: Color(0xFFEDEBFF),
                               imagepatth: 'Writting.png',
                               title: 'Writting',
+                              lessons: 15,
                             ),
                           ),
                         ),
@@ -249,15 +160,126 @@ class _MainpageState extends State<Mainpage> {
   }
 }
 
+class infocard extends StatelessWidget {
+  const infocard({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Card(
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadiusGeometry.circular(30),
+      ),
+      color: Colors.deepPurple,
+      elevation: 0,
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          Padding(
+            padding: const EdgeInsets.all(15.0),
+            child: CircularPercentIndicator(
+              radius: 70.0, // büyükluk
+              lineWidth: 12.0, //kalınlık
+              percent: 0.75,
+              progressColor: Colors.white,
+              center: Text(
+                "%75",
+                style: TextStyle(
+                  fontSize: 22,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.white,
+                ),
+              ),
+
+              //yüzde
+            ),
+          ),
+          Expanded(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.start,
+
+              children: [
+                Padding(
+                  padding: const EdgeInsets.only(left: 2, bottom: 10),
+                  child: Text(
+                    AppText().infobaslik,
+                    style: Theme.of(
+                      context,
+                    ).textTheme.bodyLarge?.copyWith(color: Colors.white),
+                  ),
+                ),
+                Text(
+                  AppText().infomesaj,
+                  style: Theme.of(
+                    context,
+                  ).textTheme.bodyMedium?.copyWith(color: Colors.white),
+                  softWrap: true,
+                  maxLines: null,
+                  overflow: TextOverflow.visible,
+                ),
+                TextButton(
+                  onPressed: () {},
+                  child: Row(
+                    children: [
+                      Text(
+                        AppText().infobuttontext,
+                        style: Theme.of(
+                          context,
+                        ).textTheme.labelLarge?.copyWith(color: Colors.white),
+                      ),
+                      Icon(Icons.arrow_right_alt_sharp, color: Colors.white),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class bottommenu extends StatelessWidget {
+  const bottommenu({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return BottomNavigationBar(
+      type: BottomNavigationBarType.fixed,
+      fixedColor: Colors.deepPurple,
+      items: [
+        BottomNavigationBarItem(
+          icon: Icon(Icons.other_houses_outlined, color: Colors.blueGrey[200]),
+          label: "Home",
+        ),
+        BottomNavigationBarItem(
+          icon: Icon(Icons.explore, color: Colors.blueGrey[200]),
+          label: "Explore",
+        ),
+        BottomNavigationBarItem(
+          icon: Icon(Icons.menu_book_sharp, color: Colors.blueGrey[200]),
+          label: "Courses",
+        ),
+        BottomNavigationBarItem(
+          icon: Icon(Icons.person, color: Colors.blueGrey[200]),
+          label: "Profile",
+        ),
+      ],
+    );
+  }
+}
+
 class Courselistcard extends StatelessWidget {
   const Courselistcard({
-    super.key,
+    Key? key,
     required this.backcolor,
     required this.imagepatth,
     required this.title,
-  });
+    required this.lessons,
+  }) : super(key: key);
   final Color backcolor;
-
+  final int lessons;
   final String imagepatth;
   final String title;
 
@@ -302,7 +324,7 @@ class Courselistcard extends StatelessWidget {
                   children: [
                     Expanded(
                       child: Text(
-                        "18 Lessons",
+                        "$lessons lessons",
                         overflow: TextOverflow.ellipsis,
                       ),
                     ),
@@ -319,8 +341,11 @@ class Courselistcard extends StatelessWidget {
 }
 
 class AppText {
-  String name = "gardas";
-  String altbaslik = "What do you want to learn?";
+  String name = "Gardas";
+  String altbaslik = "What do you want to learn ?";
+  String infobaslik = "Speaking";
+  String infomesaj = "Awesome-we're pulling in your data automagically! :)";
+  String infobuttontext = "Continue Lesson ";
 }
 
 class AppPading {
