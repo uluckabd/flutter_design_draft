@@ -185,7 +185,7 @@ class _MainpageState extends State<Mainpage> {
                           child: Padding(
                             padding: const EdgeInsets.all(4.0),
                             child: Card(
-                              color: Color(0xFFFFFCE6),
+                              color: Color(0xFFFFEBEE),
                               child: Text(
                                 'Bu bir kart',
                               ), // Card'a bir içerik ekledik
