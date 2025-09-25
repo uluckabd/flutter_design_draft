@@ -14,6 +14,31 @@ class _MainpageState extends State<Mainpage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+      bottomNavigationBar: BottomNavigationBar(
+        type: BottomNavigationBarType.fixed,
+        fixedColor: Colors.deepPurple,
+        items: [
+          BottomNavigationBarItem(
+            icon: Icon(
+              Icons.other_houses_outlined,
+              color: Colors.blueGrey[200],
+            ),
+            label: "Home",
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.explore, color: Colors.blueGrey[200]),
+            label: "Explore",
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.menu_book_sharp, color: Colors.blueGrey[200]),
+            label: "Courses",
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.person, color: Colors.blueGrey[200]),
+            label: "Profile",
+          ),
+        ],
+      ),
       body: SafeArea(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -191,7 +216,7 @@ class _MainpageState extends State<Mainpage> {
                         ),
                         SizedBox(
                           width: 200,
-                          height: 210,
+                          height: 200,
                           child: Padding(
                             padding: const EdgeInsets.all(4.0),
                             child: Courselistcard(
