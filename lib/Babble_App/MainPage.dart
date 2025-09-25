@@ -1,3 +1,4 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
 
@@ -153,12 +154,10 @@ class _MainpageState extends State<Mainpage> {
                           height: 240,
                           child: Padding(
                             padding: const EdgeInsets.all(3.0),
-                            child: Card(
-                              color: Color(0xFFFFF0F0),
-
-                              child: Text(
-                                'Bu bir kart',
-                              ), // Card'a bir içerik ekledik
+                            child: Courselistcard(
+                              backcolor: Color(0xFFFFF0F0),
+                              imagepatth: 'headphone.png',
+                              title: 'Listening',
                             ),
                           ),
                         ),
@@ -167,11 +166,10 @@ class _MainpageState extends State<Mainpage> {
                           height: 160,
                           child: Padding(
                             padding: const EdgeInsets.all(4.0),
-                            child: Card(
-                              color: Color(0xFFE6F0FF),
-                              child: Text(
-                                'Bu bir kart',
-                              ), // Card'a bir içerik ekledik
+                            child: Courselistcard(
+                              backcolor: Color(0xFFE6F0FF),
+                              imagepatth: 'Speaker.png',
+                              title: 'Speaking',
                             ),
                           ),
                         ),
@@ -184,11 +182,10 @@ class _MainpageState extends State<Mainpage> {
                           height: 200,
                           child: Padding(
                             padding: const EdgeInsets.all(4.0),
-                            child: Card(
-                              color: Color(0xFFFFEBEE),
-                              child: Text(
-                                'Bu bir kart',
-                              ), // Card'a bir içerik ekledik
+                            child: Courselistcard(
+                              backcolor: Color(0xFFFFEBEE),
+                              imagepatth: 'reading.png',
+                              title: 'Reading',
                             ),
                           ),
                         ),
@@ -197,11 +194,10 @@ class _MainpageState extends State<Mainpage> {
                           height: 210,
                           child: Padding(
                             padding: const EdgeInsets.all(4.0),
-                            child: Card(
-                              color: Color(0xFFEDEBFF),
-                              child: Text(
-                                'Bu bir kart',
-                              ), // Card'a bir içerik ekledik
+                            child: Courselistcard(
+                              backcolor: Color(0xFFEDEBFF),
+                              imagepatth: 'Writting.png',
+                              title: 'Writting',
                             ),
                           ),
                         ),
@@ -223,6 +219,75 @@ class _MainpageState extends State<Mainpage> {
       image: DecorationImage(
         image: NetworkImage('https://picsum.photos/200'),
         fit: BoxFit.cover,
+      ),
+    );
+  }
+}
+
+class Courselistcard extends StatelessWidget {
+  const Courselistcard({
+    super.key,
+    required this.backcolor,
+    required this.imagepatth,
+    required this.title,
+  });
+  final Color backcolor;
+
+  final String imagepatth;
+  final String title;
+
+  @override
+  Widget build(BuildContext context) {
+    return Card(
+      color: backcolor,
+      child: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: LayoutBuilder(
+          builder: (context, constraints) {
+            // Kartın mevcut genişliğine göre resim boyutunu ayarla
+            double imageSize = constraints.maxWidth * 0.3; // genişliğin %30'u
+            if (imageSize > 70) imageSize = 70; // maksimum boyut
+            if (imageSize < 40) imageSize = 40; // minimum boyut
+
+            return Column(
+              mainAxisSize: MainAxisSize.min,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                ClipRRect(
+                  borderRadius: BorderRadius.circular(imageSize / 2),
+                  child: SizedBox(
+                    width: imageSize,
+                    height: imageSize,
+                    child: Image.asset(
+                      "lib/Babble_App/assets/image/$imagepatth",
+
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+                ),
+
+                const Spacer(), // Metni altta yaslamak için araya boşluk
+
+                Text(
+                  title,
+                  style: Theme.of(context).textTheme.bodyLarge,
+                  overflow: TextOverflow.ellipsis,
+                ),
+                Row(
+                  children: [
+                    Expanded(
+                      child: Text(
+                        "18 Lessons",
+                        overflow: TextOverflow.ellipsis,
+                      ),
+                    ),
+                    const Icon(Icons.arrow_right_alt),
+                  ],
+                ),
+              ],
+            );
+          },
+        ),
       ),
     );
   }
