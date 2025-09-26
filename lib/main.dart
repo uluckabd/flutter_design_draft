@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_design_draft/Babble_App/CoursesPage.dart';
 import 'package:flutter_design_draft/Babble_App/MainPage.dart';
 
 void main() {
@@ -24,7 +25,7 @@ class MyApp extends StatelessWidget {
         ),
       ),
 
-      home: Mainpage(),
+      home: CoursesPage(),
     );
   }
 }
