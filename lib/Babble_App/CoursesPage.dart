@@ -13,6 +13,7 @@ class _CoursesPageState extends State<CoursesPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      bottomNavigationBar: bottommenu(),
       appBar: AppBar(
         centerTitle: true,
         title: Text(
@@ -114,14 +115,52 @@ class bodycard extends StatelessWidget {
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadiusGeometry.circular(30),
                       ),
-                      child: Container(height: 25, width: 250),
+                      child: Container(
+                        height: 25,
+                        width: 250,
+                        child: Row(
+                          children: [
+                            Padding(
+                              padding: const EdgeInsets.only(left: 4, right: 4),
+                              child: Icon(Icons.access_time),
+                            ),
+                            Text(
+                              "14.30 PM | ",
+                              style: Theme.of(context).textTheme.bodyMedium,
+                            ),
+                            Text("29 Eylül, 2023"),
+                          ],
+                        ),
+                      ),
                     ),
                   ),
 
-                  Row(
-                    children: [Text("book now"), Icon(Icons.arrow_right_alt)],
+                  Padding(
+                    padding: const EdgeInsets.only(left: 30, top: 10),
+                    child: Row(
+                      children: [
+                        Text(
+                          "book now",
+                          style: Theme.of(context).textTheme.headlineMedium,
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(left: 8),
+                          child: Icon(Icons.arrow_right_alt),
+                        ),
+                      ],
+                    ),
                   ),
                 ],
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(right: 30),
+              child: Container(
+                child: Image.asset(
+                  "lib/Babble_App/assets/image/coursepageprofil.png",
+                ),
+                width: 80,
+                height: 80,
               ),
             ),
           ],
@@ -157,6 +196,36 @@ class topbuttons extends StatelessWidget {
           ),
         ),
       ),
+    );
+  }
+}
+
+class bottommenu extends StatelessWidget {
+  const bottommenu({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return BottomNavigationBar(
+      type: BottomNavigationBarType.fixed,
+      fixedColor: Colors.deepPurple,
+      items: [
+        BottomNavigationBarItem(
+          icon: Icon(Icons.other_houses_outlined, color: Colors.blueGrey[200]),
+          label: "Home",
+        ),
+        BottomNavigationBarItem(
+          icon: Icon(Icons.explore, color: Colors.blueGrey[200]),
+          label: "Explore",
+        ),
+        BottomNavigationBarItem(
+          icon: Icon(Icons.menu_book_sharp, color: Colors.blueGrey[200]),
+          label: "Courses",
+        ),
+        BottomNavigationBarItem(
+          icon: Icon(Icons.person, color: Colors.blueGrey[200]),
+          label: "Profile",
+        ),
+      ],
     );
   }
 }
