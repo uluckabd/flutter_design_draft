@@ -14,25 +14,14 @@ class _CoursesPageState extends State<CoursesPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       bottomNavigationBar: bottommenu(),
-      appBar: AppBar(
-        centerTitle: true,
-        title: Text(
-          "Live Class",
-          style: Theme.of(
-            context,
-          ).textTheme.headlineLarge?.copyWith(color: Colors.deepPurple),
-        ),
-      ),
+      appBar: AppBar(centerTitle: true, title: _Titletext()),
       body: Expanded(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Padding(
               padding: const EdgeInsets.all(16.0),
-              child: Text(
-                "Book Your Live Class",
-                style: Theme.of(context).textTheme.headlineMedium,
-              ),
+              child: _Subtitletext(),
             ),
 
             Row(
@@ -49,24 +38,34 @@ class _CoursesPageState extends State<CoursesPage> {
                 child: Column(
                   children: [
                     bodycard(
-                      cardcolor: const Color.fromARGB(255, 74, 249, 92),
-                      title: 'asdasdasdas',
+                      cardcolor: const Color.fromARGB(255, 101, 175, 236),
+                      cardtitle: 'asdasdasdas',
+                      cardtime: '14.30',
+                      carddate: '1 eylül 2025',
                     ),
                     bodycard(
-                      cardcolor: const Color.fromARGB(255, 194, 238, 179),
-                      title: 'asdasdasdas',
+                      cardcolor: const Color.fromARGB(255, 229, 136, 200),
+                      cardtitle: 'asdasdasdas',
+                      cardtime: '14.31',
+                      carddate: '2 eylül 2025',
                     ),
                     bodycard(
-                      cardcolor: const Color.fromARGB(255, 228, 150, 42),
-                      title: 'asdasdasdas',
+                      cardcolor: const Color.fromARGB(255, 239, 236, 94),
+                      cardtitle: 'asdasdasdas',
+                      cardtime: '18.25',
+                      carddate: '3 eylül 2025',
                     ),
                     bodycard(
-                      cardcolor: const Color.fromARGB(255, 225, 87, 108),
-                      title: 'asdasdasdas',
+                      cardcolor: const Color.fromARGB(255, 161, 132, 231),
+                      cardtitle: 'asdasdasdas',
+                      cardtime: '15.30',
+                      carddate: '4 eylül 2025',
                     ),
                     bodycard(
-                      cardcolor: const Color.fromARGB(255, 199, 79, 101),
-                      title: 'asdasdasdas',
+                      cardcolor: const Color.fromARGB(255, 145, 154, 216),
+                      cardtitle: 'asdasdasdas',
+                      cardtime: '16.00',
+                      carddate: '5 eylül 2025',
                     ),
                   ],
                 ),
@@ -79,11 +78,44 @@ class _CoursesPageState extends State<CoursesPage> {
   }
 }
 
+class _Subtitletext extends StatelessWidget {
+  const _Subtitletext({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Text(
+      "Book Your Live Class",
+      style: Theme.of(context).textTheme.headlineMedium,
+    );
+  }
+}
+
+class _Titletext extends StatelessWidget {
+  const _Titletext({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Text(
+      "Live Class",
+      style: Theme.of(
+        context,
+      ).textTheme.headlineLarge?.copyWith(color: Colors.deepPurple),
+    );
+  }
+}
+
 class bodycard extends StatelessWidget {
-  const bodycard({Key? key, required this.cardcolor, required this.title})
-    : super(key: key);
+  const bodycard({
+    Key? key,
+    required this.cardcolor,
+    required this.cardtitle,
+    required this.cardtime,
+    required this.carddate,
+  }) : super(key: key);
   final Color cardcolor;
-  final String title;
+  final String cardtitle;
+  final String cardtime;
+  final String carddate;
 
   @override
   Widget build(BuildContext context) {
@@ -105,7 +137,7 @@ class bodycard extends StatelessWidget {
                   Padding(
                     padding: const EdgeInsets.only(top: 40, left: 25),
                     child: Text(
-                      title,
+                      cardtitle,
                       style: Theme.of(context).textTheme.headlineLarge,
                     ),
                   ),
@@ -125,10 +157,10 @@ class bodycard extends StatelessWidget {
                               child: Icon(Icons.access_time),
                             ),
                             Text(
-                              "14.30 PM | ",
+                              "$cardtime PM | ",
                               style: Theme.of(context).textTheme.bodyMedium,
                             ),
-                            Text("29 Eylül, 2023"),
+                            Text("$carddate"),
                           ],
                         ),
                       ),
