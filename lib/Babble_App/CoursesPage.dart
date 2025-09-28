@@ -1,3 +1,4 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
 
@@ -46,11 +47,26 @@ class _CoursesPageState extends State<CoursesPage> {
               child: SingleChildScrollView(
                 child: Column(
                   children: [
-                    bodycard(),
-                    bodycard(),
-                    bodycard(),
-                    bodycard(),
-                    bodycard(),
+                    bodycard(
+                      cardcolor: const Color.fromARGB(255, 74, 249, 92),
+                      title: 'asdasdasdas',
+                    ),
+                    bodycard(
+                      cardcolor: const Color.fromARGB(255, 194, 238, 179),
+                      title: 'asdasdasdas',
+                    ),
+                    bodycard(
+                      cardcolor: const Color.fromARGB(255, 228, 150, 42),
+                      title: 'asdasdasdas',
+                    ),
+                    bodycard(
+                      cardcolor: const Color.fromARGB(255, 225, 87, 108),
+                      title: 'asdasdasdas',
+                    ),
+                    bodycard(
+                      cardcolor: const Color.fromARGB(255, 199, 79, 101),
+                      title: 'asdasdasdas',
+                    ),
                   ],
                 ),
               ),
@@ -63,47 +79,53 @@ class _CoursesPageState extends State<CoursesPage> {
 }
 
 class bodycard extends StatelessWidget {
-  const bodycard({super.key});
+  const bodycard({Key? key, required this.cardcolor, required this.title})
+    : super(key: key);
+  final Color cardcolor;
+  final String title;
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadiusGeometry.circular(30),
-      ),
-      color: Colors.deepPurple,
-      elevation: 0,
-      child: Row(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          Padding(
-            padding: const EdgeInsets.all(15.0),
-            child: CircularPercentIndicator(
-              radius: 70.0, // büyükluk
-              lineWidth: 12.0, //kalınlık
-              percent: 0.75,
-              progressColor: Colors.white,
-              center: Text(
-                "%75",
-                style: TextStyle(
-                  fontSize: 22,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.white,
-                ),
+    return SizedBox(
+      width: MediaQuery.of(context).size.width,
+      height: 180,
+      child: Card(
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
+        color: cardcolor,
+        elevation: 0,
+        child: Row(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Expanded(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.only(top: 40, left: 25),
+                    child: Text(
+                      title,
+                      style: Theme.of(context).textTheme.headlineLarge,
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(left: 30, top: 10),
+                    child: Card(
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadiusGeometry.circular(30),
+                      ),
+                      child: Container(height: 25, width: 250),
+                    ),
+                  ),
+
+                  Row(
+                    children: [Text("book now"), Icon(Icons.arrow_right_alt)],
+                  ),
+                ],
               ),
-
-              //yüzde
             ),
-          ),
-          Expanded(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.start,
-
-              children: [],
-            ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
