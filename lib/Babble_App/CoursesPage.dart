@@ -39,31 +39,31 @@ class _CoursesPageState extends State<CoursesPage> {
                   children: [
                     bodycard(
                       cardcolor: const Color.fromARGB(255, 101, 175, 236),
-                      cardtitle: 'asdasdasdas',
+                      cardtitle: 'cardtitle',
                       cardtime: '14.30',
                       carddate: '1 eylül 2025',
                     ),
                     bodycard(
                       cardcolor: const Color.fromARGB(255, 229, 136, 200),
-                      cardtitle: 'asdasdasdas',
+                      cardtitle: 'cardtitle',
                       cardtime: '14.31',
                       carddate: '2 eylül 2025',
                     ),
                     bodycard(
                       cardcolor: const Color.fromARGB(255, 239, 236, 94),
-                      cardtitle: 'asdasdasdas',
+                      cardtitle: 'cardtitle',
                       cardtime: '18.25',
                       carddate: '3 eylül 2025',
                     ),
                     bodycard(
                       cardcolor: const Color.fromARGB(255, 161, 132, 231),
-                      cardtitle: 'asdasdasdas',
+                      cardtitle: 'cardtitle',
                       cardtime: '15.30',
                       carddate: '4 eylül 2025',
                     ),
                     bodycard(
                       cardcolor: const Color.fromARGB(255, 145, 154, 216),
-                      cardtitle: 'asdasdasdas',
+                      cardtitle: 'cardtitle',
                       cardtime: '16.00',
                       carddate: '5 eylül 2025',
                     ),
@@ -187,12 +187,11 @@ class bodycard extends StatelessWidget {
             ),
             Padding(
               padding: const EdgeInsets.only(right: 30),
-              child: Container(
-                child: Image.asset(
+              child: CircleAvatar(
+                radius: 40, // yarıçap (80px için 40 veriyoruz)
+                backgroundImage: AssetImage(
                   "lib/Babble_App/assets/image/coursepageprofil.png",
                 ),
-                width: 80,
-                height: 80,
               ),
             ),
           ],
