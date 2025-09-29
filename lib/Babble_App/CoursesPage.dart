@@ -188,7 +188,7 @@ class bodycard extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.only(right: 30),
               child: CircleAvatar(
-                radius: 40, // yarıçap (80px için 40 veriyoruz)
+                radius: 40,
                 backgroundImage: AssetImage(
                   "lib/Babble_App/assets/image/coursepageprofil.png",
                 ),
