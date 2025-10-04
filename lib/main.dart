@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_design_draft/Babble_App/CoursesPage.dart';
 import 'package:flutter_design_draft/Babble_App/DetailPage.dart';
 import 'package:flutter_design_draft/Babble_App/MainPage.dart';
-import 'package:flutter_design_draft/My_App/Home_Page.dart';
+import 'package:flutter_design_draft/My_App/Message_Page.dart';
+
+import 'package:flutter_design_draft/My_App/Profile_Page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -27,7 +29,7 @@ class MyApp extends StatelessWidget {
         ),
       ),
 
-      home: HomePage(),
+      home: MessagePage(),
     );
   }
 }
