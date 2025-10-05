@@ -6,6 +6,7 @@ import 'package:flutter_design_draft/My_App/Home_Page.dart';
 import 'package:flutter_design_draft/My_App/Message_Page.dart';
 
 import 'package:flutter_design_draft/My_App/Profile_Page.dart';
+import 'package:flutter_design_draft/My_App/Search_Page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -30,7 +31,7 @@ class MyApp extends StatelessWidget {
         ),
       ),
 
-      home: HomePage(),
+      home: SearchPage(),
     );
   }
 }
